@@ -1,0 +1,77 @@
+{
+	"name": "l13-duplicate",
+	"displayName": "L13 Duplicate",
+	"description": "Duplicate multiple selections and/or lines",
+	"version": "1.0.0",
+	"publisher": "L13RARY",
+	"license": "SEE LICENCE IN LICENCE.md",
+	"homepage": "https://github.com/l13/vscode-duplicate/blob/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/l13/vscode-duplicate.git"
+	},
+	"bugs": {
+		"url": "https://github.com/l13/vscode-duplicate/issues"
+	},
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#232323",
+		"theme": "dark"
+	},
+	"engines": {
+		"vscode": "^1.37.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"duplicate",
+		"line",
+		"selection"
+	],
+	"activationEvents": [
+		"onCommand:l13Duplicate.after",
+		"onCommand:l13Duplicate.before"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "l13Duplicate.after",
+				"title": "Duplicate After Selection"
+			},
+			{
+				"command": "l13Duplicate.before",
+				"title": "Duplicate Before Selection"
+			}
+		],
+		"keybindings": [
+			{
+				"mac": "ctrl+d",
+				"key": "ctrl+shift+d",
+				"command": "l13Duplicate.before",
+				"when": "editorTextFocus && !editorReadonly"
+			},
+			{
+				"mac": "ctrl+shift+d",
+				"key": "ctrl+alt+shift+d",
+				"command": "l13Duplicate.after",
+				"when": "editorTextFocus && !editorReadonly"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^10.14.12",
+		"tslint": "^5.18.0",
+		"typescript": "^3.4.5",
+		"vscode": "^1.1.35"
+	}
+}
