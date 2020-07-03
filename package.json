@@ -1,8 +1,8 @@
 {
 	"name": "l13-duplicate",
-	"displayName": "L13 Duplicate",
+	"displayName": "Duplicate",
 	"description": "Duplicate multiple selections and/or lines",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"publisher": "L13RARY",
 	"license": "SEE LICENCE IN LICENCE.md",
 	"homepage": "https://github.com/l13/vscode-duplicate/blob/master/README.md",
