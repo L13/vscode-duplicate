@@ -1,6 +1,13 @@
-# L13 Duplicate
+# Duplicate
 
 Duplicate multiple selections and/or lines before or after their current positions.
+
+## Index
+
+1. [Features](#features)
+1. [Available Commands](#available-commands)
+1. [Keyboard Shortcuts](#keyboard-shortcuts)
+1. [Recommended Extensions](#recommended-extensions)
 
 ## Features
 
@@ -25,3 +32,7 @@ Duplicate multiple selections and/or lines before or after their current positio
 * `Ctrl + Alt + Shift + D` -> `Duplicate After Selection`
 
 If the key bindings don't work, please check `Preferences -> Keyboard Shortcuts`.
+
+## Recommended Extensions
+
+- [Extension Pack](https://marketplace.visualstudio.com/items?itemName=L13RARY.l13-extension-pack)

@@ -4,6 +4,7 @@ out/test/**
 src/**
 test/**
 .gitignore
+gulpfile.js
 **/tsconfig.json
 **/tslint.json
 **/*.map
