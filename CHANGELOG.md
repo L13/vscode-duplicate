@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to the "Duplicate" extension will be documented in this file.
 
-## [1.0.2] - 2020-07-19
+## [1.0.2] - 2020-07-15
 
 ### Fixed
 - Fixed keyboard shortcut for macOS in README.
