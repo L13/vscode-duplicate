@@ -23,8 +23,8 @@ Duplicate multiple selections and/or lines before or after their current positio
 
 ### macOS
 
-* `Cmd + D` -> `Duplicate Before Selection`
-* `Cmd + Shift + D` -> `Duplicate After Selection`
+* `Ctrl + D` -> `Duplicate Before Selection`
+* `Ctrl + Shift + D` -> `Duplicate After Selection`
 
 ### Windows / Linux
 
