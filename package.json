@@ -2,7 +2,7 @@
 	"name": "l13-duplicate",
 	"displayName": "Duplicate",
 	"description": "Duplicate multiple selections and/or lines",
-	"version": "1.0.2",
+	"version": "1.1.0",
 	"publisher": "L13RARY",
 	"license": "SEE LICENCE IN LICENCE.md",
 	"homepage": "https://github.com/l13/vscode-duplicate/blob/master/README.md",
@@ -30,18 +30,28 @@
 		"selection"
 	],
 	"activationEvents": [
-		"onCommand:l13Duplicate.after",
-		"onCommand:l13Duplicate.before"
+		"onCommand:l13Duplicate.action.duplicateAfterSelection",
+		"onCommand:l13Duplicate.action.duplicateBeforeSelection"
 	],
+	"extensionKind": [
+		"ui",
+		"workspace"
+	],
+	"capabilities": {
+		"virtualWorkspaces": true,
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "l13Duplicate.after",
+				"command": "l13Duplicate.action.duplicateAfterSelection",
 				"title": "Duplicate After Selection"
 			},
 			{
-				"command": "l13Duplicate.before",
+				"command": "l13Duplicate.action.duplicateBeforeSelection",
 				"title": "Duplicate Before Selection"
 			}
 		],
@@ -49,13 +59,13 @@
 			{
 				"mac": "ctrl+d",
 				"key": "ctrl+shift+d",
-				"command": "l13Duplicate.before",
+				"command": "l13Duplicate.action.duplicateBeforeSelection",
 				"when": "editorTextFocus && !editorReadonly"
 			},
 			{
 				"mac": "ctrl+shift+d",
 				"key": "ctrl+alt+shift+d",
-				"command": "l13Duplicate.after",
+				"command": "l13Duplicate.action.duplicateAfterSelection",
 				"when": "editorTextFocus && !editorReadonly"
 			}
 		]

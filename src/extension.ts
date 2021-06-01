@@ -16,8 +16,8 @@ const LINE_BREAKS = ['', '\n', '\r\n'];
 
 export function activate () {
 
-	vscode.commands.registerCommand('l13Duplicate.after', () => duplicate(false));
-	vscode.commands.registerCommand('l13Duplicate.before', () => duplicate(true));
+	vscode.commands.registerCommand('l13Duplicate.action.duplicateAfterSelection', () => duplicate(false));
+	vscode.commands.registerCommand('l13Duplicate.action.duplicateBeforeSelection', () => duplicate(true));
 	
 }
 
