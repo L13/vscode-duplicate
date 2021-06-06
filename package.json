@@ -30,6 +30,8 @@
 		"selection"
 	],
 	"activationEvents": [
+		"onCommand:l13Duplicate.after",
+		"onCommand:l13Duplicate.before",
 		"onCommand:l13Duplicate.action.duplicateAfterSelection",
 		"onCommand:l13Duplicate.action.duplicateBeforeSelection"
 	],
@@ -47,6 +49,14 @@
 	"contributes": {
 		"commands": [
 			{
+				"command": "l13Duplicate.after",
+				"title": "Duplicate After Selection (Deprecated)"
+			},
+			{
+				"command": "l13Duplicate.before",
+				"title": "Duplicate Before Selection (Deprecated)"
+			},
+			{
 				"command": "l13Duplicate.action.duplicateAfterSelection",
 				"title": "Duplicate After Selection"
 			},
@@ -57,18 +67,38 @@
 		],
 		"keybindings": [
 			{
-				"mac": "ctrl+d",
-				"key": "ctrl+shift+d",
-				"command": "l13Duplicate.action.duplicateBeforeSelection",
-				"when": "editorTextFocus && !editorReadonly"
-			},
-			{
 				"mac": "ctrl+shift+d",
 				"key": "ctrl+alt+shift+d",
 				"command": "l13Duplicate.action.duplicateAfterSelection",
 				"when": "editorTextFocus && !editorReadonly"
+			},
+			{
+				"mac": "ctrl+d",
+				"key": "ctrl+shift+d",
+				"command": "l13Duplicate.action.duplicateBeforeSelection",
+				"when": "editorTextFocus && !editorReadonly"
 			}
-		]
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "l13Duplicate.after",
+					"when": "editorTextFocus && !editorReadonly"
+				},
+				{
+					"command": "l13Duplicate.before",
+					"when": "editorTextFocus && !editorReadonly"
+				},
+				{
+					"command": "l13Duplicate.action.duplicateAfterSelection",
+					"when": "editorTextFocus && !editorReadonly"
+				},
+				{
+					"command": "l13Duplicate.action.duplicateBeforeSelection",
+					"when": "editorTextFocus && !editorReadonly"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

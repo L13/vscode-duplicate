@@ -6,7 +6,10 @@ import * as vscode from 'vscode';
 
 const Selection = vscode.Selection;
 const Position = vscode.Position;
-const LINE_BREAKS = ['', '\n', '\r\n'];
+
+const linebreaks = ['', '\n', '\r\n'];
+
+let usedDeprecatedMessage = false;
 
 //	Initialize _________________________________________________________________
 
@@ -15,6 +18,20 @@ const LINE_BREAKS = ['', '\n', '\r\n'];
 //	Exports ____________________________________________________________________
 
 export function activate () {
+
+	vscode.commands.registerCommand('l13Duplicate.after', () => {
+		
+		deprecated();
+		duplicate(false);
+		
+	});
+	
+	vscode.commands.registerCommand('l13Duplicate.before', () => {
+		
+		deprecated();
+		duplicate(true);
+		
+	});
 
 	vscode.commands.registerCommand('l13Duplicate.action.duplicateAfterSelection', () => duplicate(false));
 	vscode.commands.registerCommand('l13Duplicate.action.duplicateBeforeSelection', () => duplicate(true));
@@ -48,7 +65,7 @@ function duplicate (moveSelection:boolean) {
 	activeTextEditor.edit((textEdit:vscode.TextEditorEdit) => {
 	
 		const selections = sortSelections(document, activeTextEditor.selections);
-		const eol = LINE_BREAKS[document.eol];
+		const eol = linebreaks[document.eol];
 		
 		selections.forEach((selection:vscode.Selection) => {
 			
@@ -119,5 +136,16 @@ function sortSelections (document:vscode.TextDocument, selections:vscode.Selecti
 		return -(offsetA < offsetB) || +(offsetA > offsetB) || 0;
 		
 	});
+	
+}
+
+function deprecated () {
+	
+	if (!usedDeprecatedMessage) {
+		// eslint-disable-next-line max-len
+		const text = 'The commands "l13Duplicate.after" and "l13Duplicate.before" are depricated. Please use "l13Duplicate.action.duplicateAfterSelection" and "l13Duplicate.action.duplicateBeforeSelection" for your custom keyboard shortcuts.';
+		vscode.window.showInformationMessage(text);
+		usedDeprecatedMessage = true;
+	}
 	
 }
