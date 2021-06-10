@@ -144,7 +144,7 @@ function deprecated () {
 	if (!usedDeprecatedMessage) {
 		// eslint-disable-next-line max-len
 		const text = 'The commands "l13Duplicate.after" and "l13Duplicate.before" are depricated. Please use "l13Duplicate.action.duplicate.after" and "l13Duplicate.action.duplicate.before" for your custom keyboard shortcuts.';
-		vscode.window.showInformationMessage(text);
+		vscode.window.showWarningMessage(text);
 		usedDeprecatedMessage = true;
 	}
 	

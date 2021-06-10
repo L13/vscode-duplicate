@@ -83,19 +83,19 @@
 			"commandPalette": [
 				{
 					"command": "l13Duplicate.after",
-					"when": "editorTextFocus && !editorReadonly"
+					"when": "false"
 				},
 				{
 					"command": "l13Duplicate.before",
-					"when": "editorTextFocus && !editorReadonly"
+					"when": "false"
 				},
 				{
 					"command": "l13Duplicate.action.duplicate.after",
-					"when": "editorTextFocus && !editorReadonly"
+					"when": "!editorReadonly"
 				},
 				{
 					"command": "l13Duplicate.action.duplicate.before",
-					"when": "editorTextFocus && !editorReadonly"
+					"when": "!editorReadonly"
 				}
 			]
 		}
