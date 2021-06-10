@@ -11,8 +11,8 @@ Duplicate multiple selections and/or lines before or after their current positio
 
 ## What's new in Duplicate 1.1.0
 
-- Added support for virtual and remote workspaces.
-- Changed commands `l13Duplicate.after` and `l13Duplicate.before` to `l13Duplicate.action.duplicateAfterSelection` and `l13Duplicate.action.duplicateBeforeSelection`.
+- Added support for trusted, virtual and remote workspaces.
+- Changed commands `l13Duplicate.after` and `l13Duplicate.before` to `l13Duplicate.action.duplicate.after` and `l13Duplicate.action.duplicate.before`.
 
 ## Features
 

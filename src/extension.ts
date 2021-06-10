@@ -33,8 +33,8 @@ export function activate () {
 		
 	});
 
-	vscode.commands.registerCommand('l13Duplicate.action.duplicateAfterSelection', () => duplicate(false));
-	vscode.commands.registerCommand('l13Duplicate.action.duplicateBeforeSelection', () => duplicate(true));
+	vscode.commands.registerCommand('l13Duplicate.action.duplicate.after', () => duplicate(false));
+	vscode.commands.registerCommand('l13Duplicate.action.duplicate.before', () => duplicate(true));
 	
 }
 
@@ -143,7 +143,7 @@ function deprecated () {
 	
 	if (!usedDeprecatedMessage) {
 		// eslint-disable-next-line max-len
-		const text = 'The commands "l13Duplicate.after" and "l13Duplicate.before" are depricated. Please use "l13Duplicate.action.duplicateAfterSelection" and "l13Duplicate.action.duplicateBeforeSelection" for your custom keyboard shortcuts.';
+		const text = 'The commands "l13Duplicate.after" and "l13Duplicate.before" are depricated. Please use "l13Duplicate.action.duplicate.after" and "l13Duplicate.action.duplicate.before" for your custom keyboard shortcuts.';
 		vscode.window.showInformationMessage(text);
 		usedDeprecatedMessage = true;
 	}

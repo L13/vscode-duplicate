@@ -32,8 +32,8 @@
 	"activationEvents": [
 		"onCommand:l13Duplicate.after",
 		"onCommand:l13Duplicate.before",
-		"onCommand:l13Duplicate.action.duplicateAfterSelection",
-		"onCommand:l13Duplicate.action.duplicateBeforeSelection"
+		"onCommand:l13Duplicate.action.duplicate.after",
+		"onCommand:l13Duplicate.action.duplicate.before"
 	],
 	"extensionKind": [
 		"ui",
@@ -57,11 +57,11 @@
 				"title": "Duplicate Before Selection (Deprecated)"
 			},
 			{
-				"command": "l13Duplicate.action.duplicateAfterSelection",
+				"command": "l13Duplicate.action.duplicate.after",
 				"title": "Duplicate After Selection"
 			},
 			{
-				"command": "l13Duplicate.action.duplicateBeforeSelection",
+				"command": "l13Duplicate.action.duplicate.before",
 				"title": "Duplicate Before Selection"
 			}
 		],
@@ -69,13 +69,13 @@
 			{
 				"mac": "ctrl+shift+d",
 				"key": "ctrl+alt+shift+d",
-				"command": "l13Duplicate.action.duplicateAfterSelection",
+				"command": "l13Duplicate.action.duplicate.after",
 				"when": "editorTextFocus && !editorReadonly"
 			},
 			{
 				"mac": "ctrl+d",
 				"key": "ctrl+shift+d",
-				"command": "l13Duplicate.action.duplicateBeforeSelection",
+				"command": "l13Duplicate.action.duplicate.before",
 				"when": "editorTextFocus && !editorReadonly"
 			}
 		],
@@ -90,11 +90,11 @@
 					"when": "editorTextFocus && !editorReadonly"
 				},
 				{
-					"command": "l13Duplicate.action.duplicateAfterSelection",
+					"command": "l13Duplicate.action.duplicate.after",
 					"when": "editorTextFocus && !editorReadonly"
 				},
 				{
-					"command": "l13Duplicate.action.duplicateBeforeSelection",
+					"command": "l13Duplicate.action.duplicate.before",
 					"when": "editorTextFocus && !editorReadonly"
 				}
 			]
