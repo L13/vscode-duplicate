@@ -9,6 +9,11 @@ Duplicate multiple selections and/or lines before or after their current positio
 1. [Keyboard Shortcuts](#keyboard-shortcuts)
 1. [Recommended Extensions](#recommended-extensions)
 
+## What's new in Duplicate 1.1.0
+
+- Added support for trusted, virtual and remote workspaces.
+- Changed commands `l13Duplicate.after` and `l13Duplicate.before` to `l13Duplicate.action.duplicate.after` and `l13Duplicate.action.duplicate.before`.
+
 ## Features
 
 * Selections can be duplicated before or after their current position.
