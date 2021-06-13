@@ -6,7 +6,10 @@ import * as vscode from 'vscode';
 
 const Selection = vscode.Selection;
 const Position = vscode.Position;
-const LINE_BREAKS = ['', '\n', '\r\n'];
+
+const linebreaks = ['', '\n', '\r\n'];
+
+let usedDeprecatedMessage = false;
 
 //	Initialize _________________________________________________________________
 
@@ -16,8 +19,22 @@ const LINE_BREAKS = ['', '\n', '\r\n'];
 
 export function activate () {
 
-	vscode.commands.registerCommand('l13Duplicate.after', () => duplicate(false));
-	vscode.commands.registerCommand('l13Duplicate.before', () => duplicate(true));
+	vscode.commands.registerCommand('l13Duplicate.after', () => {
+		
+		deprecated();
+		duplicate(false);
+		
+	});
+	
+	vscode.commands.registerCommand('l13Duplicate.before', () => {
+		
+		deprecated();
+		duplicate(true);
+		
+	});
+
+	vscode.commands.registerCommand('l13Duplicate.action.duplicate.after', () => duplicate(false));
+	vscode.commands.registerCommand('l13Duplicate.action.duplicate.before', () => duplicate(true));
 	
 }
 
@@ -30,9 +47,10 @@ export function deactivate () {
 //	Functions __________________________________________________________________
 
 /**
- * Duplicates multiple selections and/or lines and moves or keeps the position 
+ * Duplicates multiple selections and/or lines and moves or keeps the position
  * of the carets and selections.
- * @param moveSelection If true the selection or caret will move to its copy 
+ *
+ * @param moveSelection If true the selection or caret will move to its copy
  * otherwise it will stay.
  */
 
@@ -47,7 +65,7 @@ function duplicate (moveSelection:boolean) {
 	activeTextEditor.edit((textEdit:vscode.TextEditorEdit) => {
 	
 		const selections = sortSelections(document, activeTextEditor.selections);
-		const eol = LINE_BREAKS[document.eol];
+		const eol = linebreaks[document.eol];
 		
 		selections.forEach((selection:vscode.Selection) => {
 			
@@ -55,8 +73,8 @@ function duplicate (moveSelection:boolean) {
 				const line = selection.start.line;
 				const position = new Position(line + (moveSelection ? 0 : 1), 0);
 				let text = document.lineAt(line).text;
-			//	If a caret is in the last line and the caret should not move, a 
-			//	line break has to be added before the text or the copy will be 
+			//	If a caret is in the last line and the caret should not move, a
+			//	line break has to be added before the text or the copy will be
 			//	in the same line.
 				text = !moveSelection && line + 1 === document.lineCount ? eol + text : text + eol;
 				textEdit.insert(position, text);
@@ -78,7 +96,7 @@ function duplicate (moveSelection:boolean) {
 		activeTextEditor.selections = selections.map((selection:vscode.Selection) => {
 			
 			if (selection.isEmpty) {
-				const line = selection.start.line ;
+				const line = selection.start.line;
 				if (line + 1 !== document.lineCount) return selection;
 			//	If a caret is in the last line it will always move with "textEdit.insert"
 			//	to the next line. This fix sets the position of the caret to the line above.
@@ -86,8 +104,8 @@ function duplicate (moveSelection:boolean) {
 				return new Selection(position, position);
 			}
 			
-		//	If a text is insert with "textEdit.insert" right after a selection, 
-		//	the selection will be extend with the copied text. This fixes the 
+		//	If a text is insert with "textEdit.insert" right after a selection,
+		//	the selection will be extend with the copied text. This fixes the
 		//	behaviour and recreates the original selection.
 			const text = document.getText(selection);
 			const startOffset = document.offsetAt(selection.start) - text.length;
@@ -97,10 +115,12 @@ function duplicate (moveSelection:boolean) {
 		});
 		
 	});
+	
 }
 
 /**
  * Sorts an array of selections by the start offset.
+ *
  * @param document The active document in the editor.
  * @param selections An array with selections.
  * @returns Returns a sorted array with selections by position.
@@ -116,5 +136,16 @@ function sortSelections (document:vscode.TextDocument, selections:vscode.Selecti
 		return -(offsetA < offsetB) || +(offsetA > offsetB) || 0;
 		
 	});
+	
+}
+
+function deprecated () {
+	
+	if (!usedDeprecatedMessage) {
+		// eslint-disable-next-line max-len
+		const text = 'The commands "l13Duplicate.after" and "l13Duplicate.before" are depricated. Please use "l13Duplicate.action.duplicate.after" and "l13Duplicate.action.duplicate.before" for your custom keyboard shortcuts.';
+		vscode.window.showWarningMessage(text);
+		usedDeprecatedMessage = true;
+	}
 	
 }

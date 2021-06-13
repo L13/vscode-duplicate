@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to the "Duplicate" extension will be documented in this file.
 
+## [1.1.0] - 2021-06-13
+
+### Added
+- Added support for trusted, virtual and remote workspaces.
+
+### Changed
+- Changed commands `l13Duplicate.after` and `l13Duplicate.before` to `l13Duplicate.action.duplicate.after` and `l13Duplicate.action.duplicate.before`.
+
 ## [1.0.2] - 2020-07-15
 
 ### Fixed

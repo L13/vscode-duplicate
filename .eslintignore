@@ -1,0 +1,6 @@
+.vscode/
+images/
+out/
+plugins/
+test/
+gulpfile.js
